@@ -38,7 +38,13 @@ public class CiderOperator
         WebElement navigationName = driver.findElement(By.xpath ("//span[text()='" + category + "']"));
         navigationName.click();
 
-        if ()
+        //Get expected new page title
+        String expectedPageName = expectedCategoryPageName(category);
+
+        //Get actual new page title
+        String actualPageName = actualPageName();
+
+        if (expectedPageName.equals(actualPageName))
         {
             home = false;
             cat = true;
@@ -65,12 +71,17 @@ public class CiderOperator
 
         //Locating first result
         WebElement firstProduct = driver.findElement(By.className("product-item"));
+        WebElement expectedFirstProduct = firstProduct.findElement(By.className("product-item-name"));
+        String expectedFirstProductName = expectedFirstProduct.getText();
 
         //Accessing first result's details page
         WebElement firstProductLink = firstProduct.findElement(By.className("cider-link"));
         firstProductLink.click();
 
-        if ()
+        WebElement actualFirstProduct = driver.findElement(By.className("product-detail-title"));
+        String actualFirstProductName = actualFirstProduct.getText();
+
+        if (expectedFirstProductName.equals(actualFirstProductName))
         {
             home = false;
             cat = false;
@@ -106,7 +117,9 @@ public class CiderOperator
         searchInput.sendKeys(inputText);
         searchInput.sendKeys(Keys.ENTER);
 
-        if ()
+        String actualPageName = actualPageName();
+
+        if (actualPageName.equals("Results for\n“" + inputText + "”"))
         {
             home = false;
             cat = false;
@@ -168,4 +181,33 @@ public class CiderOperator
 
         return bagEdit;
     }
+
+    public String expectedCategoryPageName(String category)
+    {
+        String pageName = null;
+
+        switch(category)
+        {
+            case "New In": pageName = "All New In"; break;
+            case "Bestsellers": pageName = "All Bestsellers"; break;
+            case "Sale": pageName = "Up to 70% Off"; break;
+            case "Clothing": pageName = "Everything"; break;
+            case "Swimwear": pageName = "Swimwear\uD83D\uDC59"; break;
+            case "Curve & Plus": pageName = "Curve & Plus"; break;
+            case "Acc & Shoes": pageName = "ACC & Shoes"; break;
+        }
+
+        return pageName;
+    }
+
+    //Actual Page Name for the shown Category Page
+    public String actualPageName()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement pageNameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("sort-title-body")));
+        String actualPageName = pageNameElement.getText();
+
+        return actualPageName;
+    }
+
 }
