@@ -10,5 +10,7 @@ public enum CiderStates
 
     PRODUCT_DETAILS_PAGE,
 
-    BAG_POPUP
+    BAG_POPUP,
+
+    BAG_EDIT_POPUP
 }
