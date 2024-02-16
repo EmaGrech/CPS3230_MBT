@@ -141,7 +141,12 @@ public class CiderOperator
         WebElement bagIcon = driver.findElement(By.className("cider-header-bag"));
         bagIcon.click();
 
-        if ()
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart-drawer-header-container")));
+
+        boolean isPresent = (element != null);
+
+        if (isPresent == true)
         {
             home = false;
             cat = true;
@@ -165,7 +170,12 @@ public class CiderOperator
         WebElement bagEditIcon = driver.findElement(By.className("edit-icon"));
         bagEditIcon.click();
 
-        if ()
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("check-icon")));
+
+        boolean isPresent = (element != null);
+
+        if (isPresent == true)
         {
             home = false;
             cat = false;
@@ -209,5 +219,4 @@ public class CiderOperator
 
         return actualPageName;
     }
-
 }
