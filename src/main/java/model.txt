@@ -4,9 +4,28 @@ States:
 - SEARCH_RESULTS_PAGE,
 - PRODUCT_DETAILS_PAGE,
 - BAG_POPUP
+- BAG_EDIT_POPUP
 
 Variables:
-- action methods that navigate through the website
-    -
+- home - true
+- category - false
+- search - null
+- product - null
+- bag - false
+- bagEdit - false
 
 Transitions:
+- Navigate to a specific Category Page
+    - HOME/SEARCH_RESULTS/PRODUCT_DETAILS_PAGE -> select category -> CATEGORY_PAGE
+- Navigate to a specific Search Results Page
+    - HOME/CATEGORY/PRODUCT_DETAILS_PAGE -> enter search term -> SEARCH_RESULTS_PAGE
+- Navigate to a Product Details Page
+    - CATEGORY/SEARCH_RESULTS_PAGE -> select product -> PRODUCT_DETAILS_PAGE
+- Navigate to Bag
+    - HOME/CATEGORY/SEARCH_RESULTS/PRODUCT_DETAILS_PAGE -> click "bag" icon -> BAG_POPUP
+- Navigate to Edit Bag
+    - BAG_POPUP -> click "edit" icon -> BAG_EDIT_POPUP
+- Adding to Bag
+    - PRODUCT_DETAILS_PAGE -> click "add to bag" -> BAG_POPUP
+- Remove from Bag
+    - BAG_EDIT_POPUP -> remove unwanted products -> BAG_EDIT_POPUP -> close "edit mode" -> BAG_POPUP
