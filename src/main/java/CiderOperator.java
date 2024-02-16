@@ -38,12 +38,21 @@ public class CiderOperator
         WebElement navigationName = driver.findElement(By.xpath ("//span[text()='" + category + "']"));
         navigationName.click();
 
-        home = false;
-        cat = true;
-        details = false;
-        search = false;
-        bag = false;
-        bagEdit = false;
+        if ()
+        {
+            home = false;
+            cat = true;
+            details = false;
+            search = false;
+            bag = false;
+            bagEdit = false;
+        }
+        else
+        {
+            throw new IllegalStateException();
+        }
+
+
 
         return cat;
     }
@@ -61,12 +70,20 @@ public class CiderOperator
         WebElement firstProductLink = firstProduct.findElement(By.className("cider-link"));
         firstProductLink.click();
 
-        home = false;
-        cat = false;
-        details = true;
-        search = false;
-        bag = false;
-        bagEdit = false;
+        if ()
+        {
+            home = false;
+            cat = false;
+            details = true;
+            search = false;
+            bag = false;
+            bagEdit = false;
+        }
+        else
+        {
+            throw new IllegalStateException();
+        }
+
 
         return details;
     }
@@ -89,12 +106,19 @@ public class CiderOperator
         searchInput.sendKeys(inputText);
         searchInput.sendKeys(Keys.ENTER);
 
-        home = false;
-        cat = false;
-        details = false;
-        search = true;
-        bag = false;
-        bagEdit = false;
+        if ()
+        {
+            home = false;
+            cat = false;
+            details = false;
+            search = true;
+            bag = false;
+            bagEdit = false;
+        }
+        else
+        {
+            throw new IllegalStateException();
+        }
 
         return search;
     }
@@ -104,12 +128,19 @@ public class CiderOperator
         WebElement bagIcon = driver.findElement(By.className("cider-header-bag"));
         bagIcon.click();
 
-        home = false;
-        cat = true;
-        details = false;
-        search = false;
-        bag = true;
-        bagEdit = false;
+        if ()
+        {
+            home = false;
+            cat = true;
+            details = false;
+            search = false;
+            bag = true;
+            bagEdit = false;
+        }
+        else
+        {
+            throw new IllegalStateException();
+        }
 
         return bag;
     }
@@ -121,12 +152,19 @@ public class CiderOperator
         WebElement bagEditIcon = driver.findElement(By.className("edit-icon"));
         bagEditIcon.click();
 
-        home = false;
-        cat = false;
-        details = false;
-        search = false;
-        bag = false;
-        bagEdit = true;
+        if ()
+        {
+            home = false;
+            cat = false;
+            details = false;
+            search = false;
+            bag = false;
+            bagEdit = true;
+        }
+        else
+        {
+            throw new IllegalStateException();
+        }
 
         return bagEdit;
     }
